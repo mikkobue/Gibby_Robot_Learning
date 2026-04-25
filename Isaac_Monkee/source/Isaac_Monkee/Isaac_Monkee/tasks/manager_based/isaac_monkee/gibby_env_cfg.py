@@ -2,7 +2,7 @@ import isaaclab.sim as sim_utils
 from isaaclab.envs import ManagerBasedRLEnvCfg
 from isaaclab.scene import InteractiveSceneCfg
 from isaaclab.managers import ObservationGroupCfg, ObservationTermCfg, RewardTermCfg, TerminationTermCfg
-import isaaclab.envs.mdp as mdp
+from . import mdp
 from isaaclab.assets import RigidObjectCfg, AssetBaseCfg
 from isaaclab.terrains import TerrainImporterCfg
 from isaaclab.utils import configclass
@@ -32,7 +32,8 @@ class GibbySceneCfg(InteractiveSceneCfg):
             radius=0.5, height=5.0,
             rigid_props=sim_utils.RigidBodyPropertiesCfg(kinematic_enabled=True),
             mass_props=sim_utils.MassPropertiesCfg(mass=1000.0),
-            physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=2.0, dynamic_friction=2.0)
+            # Warm-start friction to avoid early contact explosions; can be ramped later
+            physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=1.2, dynamic_friction=1.0)
         ),
         init_state=RigidObjectCfg.InitialStateCfg(pos=(0.0, 0.0, 2.5)),
     )
@@ -53,7 +54,11 @@ class GibbyObservationsCfg(ObservationGroupCfg):
 
 @configclass
 class GibbyRewardsCfg:
-    climb_progress = RewardTermCfg(func=mdp.lin_vel_z_l2, weight=10.0)
+    # Primary objective: maximize height
+    climb_height = RewardTermCfg(func=mdp.root_height, weight=20.0)
+    # Shaping: encourage upward motion only (no reward for going down)
+    climb_progress = RewardTermCfg(func=mdp.upward_velocity, weight=2.0)
+    # Regularization
     penalize_effort = RewardTermCfg(func=mdp.joint_torques_l2, weight=-0.005)
     penalize_jerky_motion = RewardTermCfg(func=mdp.joint_acc_l2, weight=-0.001)
 
@@ -66,8 +71,8 @@ class GibbyTerminationsCfg:
 
 @configclass
 class GibbyActionsCfg:
-    arm_action = mdp.JointPositionActionCfg(asset_name="robot", joint_names=[".*_joint.*"], scale=1.0)
-    screw_action = mdp.JointVelocityActionCfg(asset_name="robot", joint_names=[".*_adhesion.*"], scale=5.0)
+    arm_action = mdp.JointPositionActionCfg(asset_name="robot", joint_names=[".*_joint.*"], scale=0.6)
+    screw_action = mdp.JointVelocityActionCfg(asset_name="robot", joint_names=[".*_adhesion.*"], scale=2.5)
 
 
 @configclass

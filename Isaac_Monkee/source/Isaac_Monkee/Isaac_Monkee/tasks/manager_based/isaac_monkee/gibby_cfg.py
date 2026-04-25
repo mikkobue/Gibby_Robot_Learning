@@ -8,12 +8,13 @@ GIBBY_CFG = ArticulationCfg(
         usd_path="/home/ubuntu/Monkee/Gibby.usd",
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
-            max_depenetration_velocity=10.0,
+            max_depenetration_velocity=5.0,
         ),
         articulation_props=sim_utils.ArticulationRootPropertiesCfg(
             enabled_self_collisions=True,
-            solver_position_iteration_count=4,
-            solver_velocity_iteration_count=0,
+            # Increase solver iterations for stability under high-friction contact
+            solver_position_iteration_count=8,
+            solver_velocity_iteration_count=1,
         ),
     ),
     init_state=ArticulationCfg.InitialStateCfg(

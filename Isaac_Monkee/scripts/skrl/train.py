@@ -95,6 +95,7 @@ simulation_app = app_launcher.app
 
 import logging
 import os
+import glob
 import random
 import time
 from datetime import datetime
@@ -203,7 +204,16 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     dump_yaml(os.path.join(log_dir, "params", "agent.yaml"), agent_cfg)
 
     # get checkpoint path (to resume training)
-    resume_path = retrieve_file_path(args_cli.checkpoint) if args_cli.checkpoint else None
+    if args_cli.checkpoint:
+        resume_path = retrieve_file_path(args_cli.checkpoint)
+    else:
+        # Prefer a saved best_model.pt if present; else use newest model_*.pt under experiment root
+        best_paths = glob.glob(os.path.join(log_root_path, "**", "models", "best_model.pt"), recursive=True)
+        if best_paths:
+            resume_path = max(best_paths, key=os.path.getmtime)
+        else:
+            model_paths = glob.glob(os.path.join(log_root_path, "**", "models", "model_*.pt"), recursive=True)
+            resume_path = max(model_paths, key=os.path.getmtime) if model_paths else None
 
     # set the IO descriptors export flag if requested
     if isinstance(env_cfg, ManagerBasedRLEnvCfg):
@@ -244,7 +254,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     # https://skrl.readthedocs.io/en/latest/api/utils/runner.html
     runner = Runner(env, agent_cfg)
 
-    # load checkpoint (if specified)
+    # load checkpoint (if specified or auto-detected)
     if resume_path:
         print(f"[INFO] Loading model checkpoint from: {resume_path}")
         runner.agent.load(resume_path)
@@ -252,7 +262,50 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     # run training
     runner.run()
 
+    # Update best_model.pt in this run as a fallback (points to the latest model of this run)
+    try:
+        run_models = glob.glob(os.path.join(log_dir, "models", "model_*.pt"))
+        if run_models:
+            latest_model = max(run_models, key=os.path.getmtime)
+            best_dst = os.path.join(os.path.dirname(latest_model), "best_model.pt")
+            import shutil
+            shutil.copy2(latest_model, best_dst)
+            print(f"[INFO] Saved/updated best_model.pt -> {os.path.basename(latest_model)}")
+    except Exception as e:
+        print(f"[WARN] Could not update best_model.pt: {e}")
+
     print(f"Training time: {round(time.time() - start_time, 2)} seconds")
+
+    # Post-run evaluation: record top-15 heights for this run
+    try:
+        import torch
+        runner.agent.set_running_mode("eval")
+        obs, _ = env.reset()
+        max_heights = []
+        steps = 1500
+        for _ in range(steps):
+            with torch.inference_mode():
+                outputs = runner.agent.act(obs, timestep=0, timesteps=0)
+                actions = outputs[-1].get("mean_actions", outputs[0])
+                obs, _, _, _, _ = env.step(actions)
+            # obs is concatenated; last 3 are root_pos (x,y,z)
+            try:
+                z = float(obs[0, -1])
+            except Exception:
+                z = float(obs[-1]) if hasattr(obs, "__getitem__") else 0.0
+            max_heights.append(z)
+        topN = 15
+        heights_sorted = sorted(max_heights, reverse=True)[:topN]
+        metrics_dir = os.path.join(log_dir, "metrics")
+        os.makedirs(metrics_dir, exist_ok=True)
+        top_file = os.path.join(metrics_dir, "top_15_heights.txt")
+        with open(top_file, "w", encoding="utf-8") as f:
+            f.write("Top 15 heights (m) — post-run eval\n")
+            for i, h in enumerate(heights_sorted, 1):
+                f.write(f"{i}. {h:.4f}\n")
+        print(f"[INFO] Wrote top heights to: {top_file}")
+    except Exception as e:
+        print(f"[WARN] Could not record top heights: {e}")
 
     # close the simulator
     env.close()
