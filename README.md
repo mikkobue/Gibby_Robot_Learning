@@ -9,3 +9,5 @@ Train.py has no use to us right now so no need to change anything there.
 
 
 DO NOT TOUCH ANYTHING ELSE IF YOURE NOT SURE ABOUT WHAT IT DOES 
+
+Look for Tipps.md to get a more detailed documentation
