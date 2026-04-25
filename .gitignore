@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Isaac / training artifacts
+logs/
+outputs/
+
+# Local envs
+env_isaaclab/
+
+# Editors
+.vscode/
+.DS_Store

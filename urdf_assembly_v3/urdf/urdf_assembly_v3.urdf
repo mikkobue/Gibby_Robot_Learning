@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="urdf_assembly_v3_renamed">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.000115105468585938 -0.0365 0.0238504113913967"
+        rpy="0 0 0" />
+      <mass
+        value="0.289236388645379" />
+      <inertia
+        ixx="0.000132761551873961"
+        ixy="2.27069878380475E-19"
+        ixz="2.81638454962055E-20"
+        iyy="9.22208850458632E-05"
+        iyz="4.59240074083166E-21"
+        izz="0.000102457028660538" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_link1">
+    <inertial>
+      <origin
+        xyz="1.46409666895719E-06 0.0265 0.032"
+        rpy="0 0 0" />
+      <mass
+        value="0.0139855333805099" />
+      <inertia
+        ixx="4.9526137894646E-06"
+        ixy="5.28057620746869E-14"
+        ixz="1.83384879073634E-10"
+        iyy="4.95261378946461E-06"
+        iyz="1.83384879073847E-10"
+        izz="7.14531123081449E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0.0265 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link1left.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0.0265 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link1left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint1"
+    type="revolute">
+    <origin
+      xyz="-0.046865 -0.0365 0.053544"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_link2">
+    <inertial>
+      <origin
+        xyz="-0.000305825393312725 0.000966359648445103 0.106341172825761"
+        rpy="0 0 0" />
+      <mass
+        value="0.229782243260054" />
+      <inertia
+        ixx="0.000614342121605754"
+        ixy="-8.32549664095527E-14"
+        ixz="-2.64032348605302E-14"
+        iyy="0.000627742240982459"
+        iyz="-8.6273676028392E-06"
+        izz="4.62566638656366E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link2left.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link2left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0.064"
+      rpy="0 0 0" />
+    <parent
+      link="left_link1" />
+    <child
+      link="left_link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_link3">
+    <inertial>
+      <origin
+        xyz="-0.000805715648479727 0.00234675284407727 0.104610252962578"
+        rpy="0 0 0" />
+      <mass
+        value="0.229652446836796" />
+      <inertia
+        ixx="0.000474381647933786"
+        ixy="-8.32549774311269E-14"
+        ixz="-2.64030323593543E-14"
+        iyy="0.00048920460960121"
+        iyz="-7.78396771784751E-06"
+        izz="4.68650934509069E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link3left.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link3left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.04825 0.26075"
+      rpy="0 0 0" />
+    <parent
+      link="left_link2" />
+    <child
+      link="left_link3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_link4">
+    <inertial>
+      <origin
+        xyz="-0.00100018017618002 0.0230612774818827 -0.00805586196059338"
+        rpy="0 0 0" />
+      <mass
+        value="0.113780679571394" />
+      <inertia
+        ixx="4.87055369505725E-05"
+        ixy="-1.83468134020384E-10"
+        ixz="-2.64028829052873E-14"
+        iyy="3.93388494809569E-05"
+        iyz="1.96303429852286E-07"
+        izz="4.11715067020158E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link4left.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link4left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0.05825 0.24075"
+      rpy="0 0 0" />
+    <parent
+      link="left_link3" />
+    <child
+      link="left_link4" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_link5">
+    <inertial>
+      <origin
+        xyz="1.36536404404808E-09 -0.0114314067048532 0.0581132156435391"
+        rpy="0 0 0" />
+      <mass
+        value="0.149495542286874" />
+      <inertia
+        ixx="8.6825708374237E-05"
+        ixy="1.02697388078987E-12"
+        ixz="2.72736879792928E-12"
+        iyy="5.05987072260068E-05"
+        iyz="2.34694232821625E-06"
+        izz="6.90822321267579E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link5left.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link5left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint5"
+    type="revolute">
+    <origin
+      xyz="-0.001 0.01275 -0.12095"
+      rpy="0 0 0" />
+    <parent
+      link="left_link4" />
+    <child
+      link="left_link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_end_effector">
+    <inertial>
+      <origin
+        xyz="0.0588629378640857 -0.0687282009157469 -0.214351335153555"
+        rpy="-0.00037097 0.038406 0" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350442260579357"
+        ixy="0.00225664600108457"
+        ixz="0.0112700614970931"
+        iyy="0.33666561882012"
+        iyz="-0.0763319908864143"
+        izz="0.0360562021300994" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="-0.00037097 0.038406 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link6left.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="-0.00037097 0.038406 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link6left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint6"
+    type="revolute">
+    <origin
+      xyz="0 0 -5.4381E-05"
+      rpy="0 0 0" />
+    <parent
+      link="left_link5" />
+    <child
+      link="left_end_effector" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_adhesion_link1">
+    <inertial>
+      <origin
+        xyz="0.0646622423547682 -0.119478168375613 -0.194448281233078"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350844174713616"
+        ixy="-0.000647388211465503"
+        ixz="-0.00070766016861792"
+        iyy="0.336665641624265"
+        iyz="-0.0763625240272531"
+        izz="0.0356542651916951" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_ll.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_ll.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_adhesion1"
+    type="continuous">
+    <origin
+      xyz="-0.013145 0.050751 -0.022503"
+      rpy="0 0 0" />
+    <parent
+      link="left_end_effector" />
+    <child
+      link="left_adhesion_link1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="left_adhesion_link2">
+    <inertial>
+      <origin
+        xyz="0.0366622442813934 -0.119478164064466 -0.194458668291756"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350844174713616"
+        ixy="-0.000647388211465503"
+        ixz="-0.000707660168617921"
+        iyy="0.336665641624265"
+        iyz="-0.0763625240272531"
+        izz="0.0356542651916951" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_lr.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_lr.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_adhesion2"
+    type="continuous">
+    <origin
+      xyz="0.014834 0.050751 -0.021427"
+      rpy="0 0 0" />
+    <parent
+      link="left_end_effector" />
+    <child
+      link="left_adhesion_link2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="right_link1">
+    <inertial>
+      <origin
+        xyz="1.4640966688878E-06 0.0265 0.0320000000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.0139855333805099" />
+      <inertia
+        ixx="4.95261378946459E-06"
+        ixy="5.28057643033231E-14"
+        ixz="1.83384879072351E-10"
+        iyy="4.9526137894646E-06"
+        iyz="1.83384879073712E-10"
+        izz="7.14531123081448E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0.0265 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link1right.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0.0265 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link1right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint1"
+    type="revolute">
+    <origin
+      xyz="0.046635 -0.0365 0.053544"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_link2">
+    <inertial>
+      <origin
+        xyz="0.000305825180978162 0.000966359648445096 0.106341172825761"
+        rpy="0 0 0" />
+      <mass
+        value="0.229782243260054" />
+      <inertia
+        ixx="0.000614342121605753"
+        ixy="-8.32549743423753E-14"
+        ixz="-2.64026839891863E-14"
+        iyy="0.000627742240982458"
+        iyz="-8.62736760283919E-06"
+        izz="4.62566638656364E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link2right.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link2right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0.064"
+      rpy="0 0 0" />
+    <parent
+      link="right_link1" />
+    <child
+      link="right_link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_link3">
+    <inertial>
+      <origin
+        xyz="0.000805715436024616 0.00234675284407723 0.104610252962577"
+        rpy="0 0 0" />
+      <mass
+        value="0.229652446836796" />
+      <inertia
+        ixx="0.000474381647933787"
+        ixy="-8.3254953856137E-14"
+        ixz="-2.64024993243238E-14"
+        iyy="0.000489204609601211"
+        iyz="-7.78396771784749E-06"
+        izz="4.68650934509069E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link3right.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link3right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.04825 0.26075"
+      rpy="0 0 0" />
+    <parent
+      link="right_link2" />
+    <child
+      link="right_link3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_link4">
+    <inertial>
+      <origin
+        xyz="0.0010001539942989 0.0230612774818827 -0.00805586196059349"
+        rpy="0 0 0" />
+      <mass
+        value="0.113780679571395" />
+      <inertia
+        ixx="4.87055369505725E-05"
+        ixy="-1.83468134031442E-10"
+        ixz="-2.64028769046393E-14"
+        iyy="3.93388494809569E-05"
+        iyz="1.96303429852292E-07"
+        izz="4.11715067020158E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link4right.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link4right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0.05825 0.24075"
+      rpy="0 0 0" />
+    <parent
+      link="right_link3" />
+    <child
+      link="right_link4" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_link5">
+    <inertial>
+      <origin
+        xyz="1.44498700331563E-09 -0.0114314066129891 0.0581132157581361"
+        rpy="0 0 0" />
+      <mass
+        value="0.149495541515728" />
+      <inertia
+        ixx="8.6825708279059E-05"
+        ixy="1.09628850450576E-12"
+        ixz="2.79001028746539E-12"
+        iyy="5.05987069687916E-05"
+        iyz="2.34694234823125E-06"
+        izz="6.90822319173622E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link5right.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link5right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint5"
+    type="revolute">
+    <origin
+      xyz="0.0010054 0.01275 -0.12095"
+      rpy="0 0 0" />
+    <parent
+      link="right_link4" />
+    <child
+      link="right_link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_end_effector">
+    <inertial>
+      <origin
+        xyz="-0.0365720709703868 -0.0687268389754472 -0.218018431109013"
+        rpy="-0.00037097 0.038406 0" /> 
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350442260579357"
+        ixy="0.00225664600108469"
+        ixz="0.011270061497093"
+        iyy="0.336665618820118"
+        iyz="-0.0763319908864177"
+        izz="0.0360562021301011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="-0.00037097 0.038406 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link6right.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="-0.00037097 0.038406 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/link6right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint6"
+    type="revolute">
+    <origin
+      xyz="0 0 -5.4381E-05"
+      rpy="0 0 0" />
+    <parent
+      link="right_link5" />
+    <child
+      link="right_end_effector" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1415926535"
+      upper="3.1415926535"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_adhesion_link1">
+    <inertial>
+      <origin
+        xyz="-0.0308431881221557 -0.119478153670588 -0.194483710804656"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350844174713616"
+        ixy="-0.000647388211465514"
+        ixz="-0.00070766016861799"
+        iyy="0.336665641624265"
+        iyz="-0.0763625240272531"
+        izz="0.0356542651916951" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_rl.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_rl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_adhesion1"
+    type="continuous">
+    <origin
+      xyz="-0.013145 0.050751 -0.022503"
+      rpy="0 0 0" />
+    <parent
+      link="right_end_effector" />
+    <child
+      link="right_adhesion_link1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="right_adhesion_link2">
+    <inertial>
+      <origin
+        xyz="-0.0588431861955305 -0.119478149359441 -0.194494097863333"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350844174713616"
+        ixy="-0.000647388211465513"
+        ixz="-0.000707660168617985"
+        iyy="0.336665641624265"
+        iyz="-0.0763625240272531"
+        izz="0.0356542651916951" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_rr.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.038035 -1.4117E-05" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_rr.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_adhesion2"
+    type="continuous">
+    <origin
+      xyz="0.014834 0.050751 -0.021427"
+      rpy="0 0 0" />
+    <parent
+      link="right_end_effector" />
+    <child
+      link="right_adhesion_link2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="body_adhesion1">
+    <inertial>
+      <origin
+        xyz="0.0168606641443995 0.0138378289055244 0.281583507862372"
+        rpy="0 0 0" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350844174713616"
+        ixy="-0.000647388211465296"
+        ixz="-0.000707660168617058"
+        iyy="0.336665641624265"
+        iyz="-0.0763625240272548"
+        izz="0.0356542651916959" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_bl.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_bl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="body_adhesion1"
+    type="continuous">
+    <origin
+      xyz="-0.01424 0 4.4418E-05"
+      rpy="-0.00037097 0.00037097 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="body_adhesion1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="body_adhesion2">
+    <inertial>
+      <origin
+        xyz="-0.0111393339314293 0.0138378332142163 0.28157312742074"
+        rpy="0 0 0" />
+      <mass
+        value="4.9205796441415" />
+      <inertia
+        ixx="0.350844174713616"
+        ixy="-0.000647388211465305"
+        ixz="-0.000707660168617095"
+        iyy="0.336665641624265"
+        iyz="-0.0763625240272548"
+        izz="0.0356542651916959" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_br.STL" />
+      </geometry>
+      <material
+        name="">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_assembly_v3/meshes/screw_br.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="body_adhesion2"
+    type="continuous">
+    <origin
+      xyz="0.01376 0 4.4411E-05"
+      rpy="-0.00037097 0.00037097 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="body_adhesion2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>
