@@ -276,36 +276,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
     print(f"Training time: {round(time.time() - start_time, 2)} seconds")
 
-    # Post-run evaluation: record top-15 heights for this run
-    try:
-        import torch
-        runner.agent.set_running_mode("eval")
-        obs, _ = env.reset()
-        max_heights = []
-        steps = 1500
-        for _ in range(steps):
-            with torch.inference_mode():
-                outputs = runner.agent.act(obs, timestep=0, timesteps=0)
-                actions = outputs[-1].get("mean_actions", outputs[0])
-                obs, _, _, _, _ = env.step(actions)
-            # obs is concatenated; last 3 are root_pos (x,y,z)
-            try:
-                z = float(obs[0, -1])
-            except Exception:
-                z = float(obs[-1]) if hasattr(obs, "__getitem__") else 0.0
-            max_heights.append(z)
-        topN = 15
-        heights_sorted = sorted(max_heights, reverse=True)[:topN]
-        metrics_dir = os.path.join(log_dir, "metrics")
-        os.makedirs(metrics_dir, exist_ok=True)
-        top_file = os.path.join(metrics_dir, "top_15_heights.txt")
-        with open(top_file, "w", encoding="utf-8") as f:
-            f.write("Top 15 heights (m) — post-run eval\n")
-            for i, h in enumerate(heights_sorted, 1):
-                f.write(f"{i}. {h:.4f}\n")
-        print(f"[INFO] Wrote top heights to: {top_file}")
-    except Exception as e:
-        print(f"[WARN] Could not record top heights: {e}")
+    # Height tracking removed on request.
 
     # close the simulator
     env.close()

@@ -54,9 +54,9 @@ class GibbyObservationsCfg(ObservationGroupCfg):
 
 @configclass
 class GibbyRewardsCfg:
-    # Primary objective: maximize height
+    # Primary objective: height
     climb_height = RewardTermCfg(func=mdp.root_height, weight=20.0)
-    # Shaping: encourage upward motion only (no reward for going down)
+    # Shaping: reward upward motion only
     climb_progress = RewardTermCfg(func=mdp.upward_velocity, weight=2.0)
     # Regularization
     penalize_effort = RewardTermCfg(func=mdp.joint_torques_l2, weight=-0.005)

@@ -30,14 +30,14 @@ def joint_pos_target_l2(env: ManagerBasedRLEnv, target: float, asset_cfg: SceneE
 def root_height(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
     """Reward absolute height (z in world) of the asset's root link.
 
-    Higher is better. This provides a clear objective signal for climbing tasks.
+    Higher is better; used as a primary objective for climbing.
     """
     asset: Articulation = env.scene[asset_cfg.name]
     return asset.data.root_pos_w[:, 2]
 
 
 def upward_velocity(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
-    """Reward only upward world-frame velocity along +Z (downward is zero).
+    """Reward only upward world-frame velocity along +Z (downward=0).
 
     Useful as a shaping term to encourage progress without rewarding downward motion.
     """
